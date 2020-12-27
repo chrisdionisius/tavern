@@ -5,11 +5,10 @@ import java.util.ArrayList;
 
 public class testPenjualan {
     public static void main(String[] args) {
-        Penjualan p = new Penjualan("SEKAI", 6, 22000, "2020/12/27");
-        p.save();
-        System.out.println(p.getById("SEKAI").getTotalHarga());
-        p.setTotalHarga(30000);
-        p.save();
-        System.out.println(p.getById("SEKAI").getTotalHarga());
+        Menu menu = new Menu().getById(5);
+        DetailPenjualan dp = new DetailPenjualan("TVN", "2020/12/27", menu, 2, ((menu.getRcost()+menu.getScost())));
+        dp.save();
+        System.out.println(dp.getMenu().getNama());
+        System.out.println(dp.getHarga());
     }
 }
