@@ -4,6 +4,7 @@ import java.sql.*;
 
 public class DBHelper {
     private static Connection koneksi;
+    public String url="jdbc:mysql://localhost:3306/tavern";
     public static void bukaKoneksi() {
         if (koneksi == null) {
             try {
