@@ -7,12 +7,14 @@ package frontend;
 
 import javax.swing.JOptionPane;
 import backend.*;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import java.util.Date;
+import javax.swing.DefaultComboBoxModel;
 
 public class FrmPenjualan extends javax.swing.JFrame {
     /**
@@ -24,9 +26,24 @@ public class FrmPenjualan extends javax.swing.JFrame {
             
     public FrmPenjualan() {
         initComponents();
+        inisialisasi();
+        tampilCmbKategori();
+        Toolkit tk = getToolkit();
+        Dimension size = tk.getScreenSize();
+        setLocation(size.width/2-getWidth()/2, size.width/5-getHeight()/5);
+        
+        //Color c = new Color(255, 255, 255);
+        this.getContentPane().setBackground(new Color(51, 51, 44));
+    }
+    
+    public void inisialisasi(){
+        Date dt = new Date();    
+        System.out.println("tes");
+        labelId.setText("TVN"+waktu.format(dt));
         tampilkanData();
         tampilkanPesanan();
-        labelId.setText("TVN"+waktu.format(date));
+        labelTotal.setText("0");
+        labelQty.setText("0");
         Penjualan penjualan = new Penjualan();
         penjualan.setId(labelId.getText());
         penjualan.setTglPenjualan(formatter.format(date));
@@ -34,9 +51,6 @@ public class FrmPenjualan extends javax.swing.JFrame {
         penjualan.setTotalQty(Integer.parseInt(labelQty.getText()));
         penjualan.save();
         
-        Toolkit tk = getToolkit();
-        Dimension size = tk.getScreenSize();
-        setLocation(size.width/2-getWidth()/2, size.width/5-getHeight()/5);
     }
     public void tampilkanPesanan(){
         String[] kolom = {"ID","Menu", "QTY", "Harga"};
@@ -72,6 +86,26 @@ public class FrmPenjualan extends javax.swing.JFrame {
         }
     }
     
+    public void tampilCmbKategori() {
+        cmbKategori.setModel(new DefaultComboBoxModel(new Kategori().getAll().toArray()));
+    }
+    
+    public void cari(String keyword) {
+        String[] kolom = {"ID", "Nama Menu", "Jenis", "Harga"};
+        ArrayList<Menu> list = new Menu().search(keyword);
+        Object rowData[] = new Object[5];
+
+        tblMenu.setModel(new DefaultTableModel(new Object[][]{}, kolom));
+
+        for (Menu menu : list) {
+            rowData[0] = menu.getId();
+            rowData[1] = menu.getNama();
+            rowData[2] = menu.getKategori().getNama();
+            rowData[3] = (menu.getRcost()+menu.getScost());
+
+            ((DefaultTableModel) tblMenu.getModel()).addRow(rowData);
+        }
+    }
     
 
     /**
@@ -96,18 +130,29 @@ public class FrmPenjualan extends javax.swing.JFrame {
         tblPenjualan = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         labelQty = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
         Menu = new javax.swing.JButton();
         KategoriBtn = new javax.swing.JButton();
+        BtnDisabled = new javax.swing.JButton();
+        cmbKategori = new javax.swing.JComboBox<>();
+        txtCari = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
         jToggleButton1.setText("jToggleButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Form Penjualan");
+        setBackground(new java.awt.Color(255, 255, 255));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("No Nota");
 
+        labelId.setForeground(new java.awt.Color(255, 255, 255));
+
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Total");
 
+        labelTotal.setForeground(new java.awt.Color(255, 255, 255));
         labelTotal.setText("0");
 
         tblMenu.setModel(new javax.swing.table.DefaultTableModel(
@@ -128,6 +173,8 @@ public class FrmPenjualan extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblMenu);
 
+        btnHapus.setBackground(new java.awt.Color(15, 29, 91));
+        btnHapus.setForeground(new java.awt.Color(255, 255, 255));
         btnHapus.setText("Hapus");
         btnHapus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -135,7 +182,14 @@ public class FrmPenjualan extends javax.swing.JFrame {
             }
         });
 
+        btnBayar.setBackground(new java.awt.Color(15, 29, 91));
+        btnBayar.setForeground(new java.awt.Color(255, 255, 255));
         btnBayar.setText("Bayar");
+        btnBayar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBayarActionPerformed(evt);
+            }
+        });
 
         tblPenjualan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -155,13 +209,14 @@ public class FrmPenjualan extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tblPenjualan);
 
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Qty");
 
+        labelQty.setForeground(new java.awt.Color(255, 255, 255));
         labelQty.setText("0");
 
-        jLabel8.setFont(new java.awt.Font("Century", 1, 14)); // NOI18N
-        jLabel8.setText("Form Penjualan");
-
+        Menu.setBackground(new java.awt.Color(15, 29, 91));
+        Menu.setForeground(new java.awt.Color(255, 255, 255));
         Menu.setText("Form Menu");
         Menu.setPreferredSize(new java.awt.Dimension(110, 40));
         Menu.addActionListener(new java.awt.event.ActionListener() {
@@ -170,6 +225,8 @@ public class FrmPenjualan extends javax.swing.JFrame {
             }
         });
 
+        KategoriBtn.setBackground(new java.awt.Color(15, 29, 91));
+        KategoriBtn.setForeground(new java.awt.Color(255, 255, 255));
         KategoriBtn.setText("Form Kategori");
         KategoriBtn.setPreferredSize(new java.awt.Dimension(110, 40));
         KategoriBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -178,24 +235,48 @@ public class FrmPenjualan extends javax.swing.JFrame {
             }
         });
 
+        BtnDisabled.setBackground(new java.awt.Color(51, 51, 44));
+        BtnDisabled.setForeground(new java.awt.Color(255, 255, 255));
+        BtnDisabled.setText("Form Penjualan");
+        BtnDisabled.setEnabled(false);
+        BtnDisabled.setPreferredSize(new java.awt.Dimension(110, 40));
+        BtnDisabled.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnDisabledActionPerformed(evt);
+            }
+        });
+
+        cmbKategori.setForeground(new java.awt.Color(255, 255, 255));
+        cmbKategori.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbKategori.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbKategoriActionPerformed(evt);
+            }
+        });
+
+        jButton1.setBackground(new java.awt.Color(15, 29, 91));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Cari");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(80, 80, 80)
-                .addComponent(labelId)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(KategoriBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48))
-            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap()
+                        .addComponent(Menu, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(KategoriBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(BtnDisabled, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -203,56 +284,67 @@ public class FrmPenjualan extends javax.swing.JFrame {
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelTotal)
-                            .addComponent(labelQty))
-                        .addGap(430, 430, 430)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(labelTotal)
+                                    .addComponent(labelId, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(labelQty)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addComponent(btnHapus)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnBayar)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(btnBayar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtCari, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton1)
+                                .addGap(29, 29, 29)
+                                .addComponent(cmbKategori, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(264, 264, 264)
-                .addComponent(jLabel8)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BtnDisabled, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(KategoriBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Menu, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(labelId)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(18, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(KategoriBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Menu, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel8)
-                        .addGap(2, 2, 2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnBayar, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(labelId, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(labelTotal))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(labelQty))))
-                .addGap(18, 18, 18)
+                            .addComponent(labelTotal))))
+                .addGap(1, 1, 1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(labelQty))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmbKategori, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
+                .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(51, 51, 51))
+                .addGap(25, 25, 25))
         );
 
         pack();
@@ -309,6 +401,31 @@ public class FrmPenjualan extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_KategoriBtnActionPerformed
 
+    private void BtnDisabledActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDisabledActionPerformed
+        
+    }//GEN-LAST:event_BtnDisabledActionPerformed
+
+    private void btnBayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBayarActionPerformed
+                  
+        Penjualan penjualan = new Penjualan();
+        penjualan.setId(labelId.getText());
+        penjualan.setTglPenjualan(formatter.format(date));
+        penjualan.setTotalHarga(Integer.parseInt(labelTotal.getText()));
+        penjualan.setTotalQty(Integer.parseInt(labelQty.getText()));
+        penjualan.save();
+        JOptionPane.showMessageDialog(this,"Total Pembelian"+penjualan.getTotalHarga());
+        inisialisasi();
+    }//GEN-LAST:event_btnBayarActionPerformed
+
+    private void cmbKategoriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbKategoriActionPerformed
+        Object selected = cmbKategori.getSelectedItem();
+        cari(String.valueOf(selected));
+    }//GEN-LAST:event_cmbKategoriActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        cari(txtCari.getText());
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -343,14 +460,16 @@ public class FrmPenjualan extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnDisabled;
     private javax.swing.JButton KategoriBtn;
     private javax.swing.JButton Menu;
     private javax.swing.JButton btnBayar;
     private javax.swing.JButton btnHapus;
+    private javax.swing.JComboBox<String> cmbKategori;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JToggleButton jToggleButton1;
@@ -359,5 +478,6 @@ public class FrmPenjualan extends javax.swing.JFrame {
     private javax.swing.JLabel labelTotal;
     private javax.swing.JTable tblMenu;
     private javax.swing.JTable tblPenjualan;
+    private javax.swing.JTextField txtCari;
     // End of variables declaration//GEN-END:variables
 }

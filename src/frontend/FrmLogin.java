@@ -5,6 +5,7 @@
  */
 package frontend;
 import backend.DBHelper;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.util.ArrayList;
@@ -25,6 +26,8 @@ public class FrmLogin extends javax.swing.JFrame {
         Toolkit tk = getToolkit();
         Dimension size = tk.getScreenSize();
         setLocation(size.width/2-getWidth()/2, size.width/5-getHeight()/5);
+        
+        this.getContentPane().setBackground(new Color(255,255,255));
     }
 
     /**
@@ -50,6 +53,7 @@ public class FrmLogin extends javax.swing.JFrame {
         jTextField2.setText("jTextField2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(java.awt.Color.darkGray);
 
         jLabel1.setFont(new java.awt.Font("Century", 1, 14)); // NOI18N
         jLabel1.setText("Login Tavern");

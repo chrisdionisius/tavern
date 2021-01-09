@@ -1,6 +1,7 @@
 package frontend;
 
 import backend.*;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.util.ArrayList;
@@ -20,6 +21,8 @@ public class FrmMenu extends javax.swing.JFrame {
         Toolkit tk = getToolkit();
         Dimension size = tk.getScreenSize();
         setLocation(size.width/2-getWidth()/2, size.width/5-getHeight()/5);
+        
+        this.getContentPane().setBackground(new Color(255,255,255));
     }
 
     public void kosongkanForm() {
@@ -102,6 +105,7 @@ public class FrmMenu extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         KategoriBtn = new javax.swing.JButton();
         Penjualan = new javax.swing.JButton();
+        BtnDisabled = new javax.swing.JButton();
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -140,6 +144,11 @@ public class FrmMenu extends javax.swing.JFrame {
         jLabel3.setText("Kategori");
 
         cmbKategori.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbKategori.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbKategoriActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("RC Menu");
 
@@ -149,6 +158,12 @@ public class FrmMenu extends javax.swing.JFrame {
         btnCari.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCariActionPerformed(evt);
+            }
+        });
+
+        txtCari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCariActionPerformed(evt);
             }
         });
 
@@ -176,6 +191,7 @@ public class FrmMenu extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Century", 1, 14)); // NOI18N
         jLabel8.setText("Form Menu");
 
+        KategoriBtn.setBackground(new java.awt.Color(255, 255, 255));
         KategoriBtn.setText("Form Kategori");
         KategoriBtn.setPreferredSize(new java.awt.Dimension(110, 40));
         KategoriBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -189,6 +205,15 @@ public class FrmMenu extends javax.swing.JFrame {
         Penjualan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PenjualanActionPerformed(evt);
+            }
+        });
+
+        BtnDisabled.setText("Form Menu");
+        BtnDisabled.setEnabled(false);
+        BtnDisabled.setPreferredSize(new java.awt.Dimension(110, 40));
+        BtnDisabled.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnDisabledActionPerformed(evt);
             }
         });
 
@@ -243,14 +268,18 @@ public class FrmMenu extends javax.swing.JFrame {
                                         .addComponent(btnSimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(0, 34, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(Penjualan, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(KategoriBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(164, 164, 164)
+                                .addComponent(jLabel8))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(BtnDisabled, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(KategoriBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Penjualan, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(174, 174, 174)
-                .addComponent(jLabel8)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -258,6 +287,7 @@ public class FrmMenu extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(KategoriBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BtnDisabled, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Penjualan, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel8)
@@ -350,6 +380,18 @@ public class FrmMenu extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_PenjualanActionPerformed
 
+    private void BtnDisabledActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDisabledActionPerformed
+
+    }//GEN-LAST:event_BtnDisabledActionPerformed
+
+    private void cmbKategoriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbKategoriActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbKategoriActionPerformed
+
+    private void txtCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCariActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCariActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -386,6 +428,7 @@ public class FrmMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnDisabled;
     private javax.swing.JButton KategoriBtn;
     private javax.swing.JButton Penjualan;
     private javax.swing.JButton btnCari;
