@@ -8,6 +8,7 @@ package frontend;
 import backend.DetailPenjualan;
 import backend.Kategori;
 import backend.Penjualan;
+import backend.Rekap;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -35,8 +36,6 @@ public class FrmRiwayatPenjualan extends javax.swing.JFrame {
         Toolkit tk = getToolkit();
         Dimension size = tk.getScreenSize();
         setLocation(size.width/2-getWidth()/2, size.width/5-getHeight()/5);
-//        this.setBackground(new Color(0,0,0,0));
-//        jPanel1.setBackground(new Color(0,0,0,0));
         this.setBackground(new Color(0,0,0,0));
         jPanel1.setBackground(new Color(0,0,0,0));
         jScrollPane1.getViewport().setBackground(new Color(0,0,0,0));
@@ -47,6 +46,7 @@ public class FrmRiwayatPenjualan extends javax.swing.JFrame {
         header.setFont(new Font("Berlin Sans FB", Font.PLAIN, 18));
         tblPenjualan.setShowHorizontalLines(true);
         tblPenjualan.setGridColor(new Color(255,255,255));
+        tampilRekap();
     }
     
     public void tampilkanData(){
@@ -67,8 +67,13 @@ public class FrmRiwayatPenjualan extends javax.swing.JFrame {
         }
     }
     
-    public void tampilCmbKategori() {
-        //cmbKategori.setModel(new DefaultComboBoxModel(new Kategori().getAll().toArray()));
+    public void tampilRekap() {
+        Rekap rekap = new Rekap();
+        labelMenu.setText(rekap.laris().getNama());
+        labelQty.setText(String.valueOf(rekap.laris().getQty()));
+        labelTotal.setText(String.valueOf(rekap.laris().getTotal()));
+        totalGross.setText(String.valueOf(rekap.penjualan().getTotal()));
+        totalQty.setText(String.valueOf(rekap.penjualan().getQty()));
     }
 
     /**
@@ -89,14 +94,24 @@ public class FrmRiwayatPenjualan extends javax.swing.JFrame {
         btnPenjualan = new javax.swing.JLabel();
         btnKategori = new javax.swing.JLabel();
         btnMenu = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        labelQty = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        labelTotal = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        labelMenu = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        totalGross = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        totalQty = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(794, 610));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setOpaque(false);
@@ -116,11 +131,6 @@ public class FrmRiwayatPenjualan extends javax.swing.JFrame {
             }
         ));
         tblPenjualan.setOpaque(false);
-        tblPenjualan.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblPenjualanMouseClicked(evt);
-            }
-        });
         jScrollPane1.setViewportView(tblPenjualan);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(65, 200, 630, 275));
@@ -161,21 +171,84 @@ public class FrmRiwayatPenjualan extends javax.swing.JFrame {
         });
         jPanel1.add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
 
-        jLabel1.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Menu Terlaris");
-        jLabel1.setToolTipText("");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 110, 20));
+        labelQty.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
+        labelQty.setForeground(new java.awt.Color(255, 255, 255));
+        labelQty.setText("0");
+        labelQty.setToolTipText("");
+        jPanel1.add(labelQty, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 140, 20, 20));
 
         jLabel2.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Total Penjualan");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 110, -1, -1));
+        jLabel2.setText("Total Gross Profit");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 110, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Menu Terjual");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 110, -1, -1));
+        jLabel3.setText("Total Terjual");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 110, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Menu Terlaris");
+        jLabel4.setToolTipText("");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 110, 20));
+
+        labelTotal.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
+        labelTotal.setForeground(new java.awt.Color(255, 255, 255));
+        labelTotal.setText("0");
+        labelTotal.setToolTipText("");
+        jPanel1.add(labelTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, 90, 20));
+
+        jLabel8.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("X");
+        jLabel8.setToolTipText("");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 140, 20, 20));
+
+        labelMenu.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
+        labelMenu.setForeground(new java.awt.Color(255, 255, 255));
+        labelMenu.setToolTipText("");
+        jPanel1.add(labelMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, 110, 20));
+
+        jLabel10.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("Rp");
+        jLabel10.setToolTipText("");
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 140, 30, 20));
+
+        jLabel5.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Gross Profit");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 110, -1, -1));
+
+        jLabel11.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText("Rp");
+        jLabel11.setToolTipText("");
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 140, 30, 20));
+
+        totalGross.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
+        totalGross.setForeground(new java.awt.Color(255, 255, 255));
+        totalGross.setText("0");
+        totalGross.setToolTipText("");
+        jPanel1.add(totalGross, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 140, 90, 20));
+
+        jLabel9.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("Menu Terjual");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 110, -1, -1));
+
+        jLabel12.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setText("X");
+        jLabel12.setToolTipText("");
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 140, 20, 20));
+
+        totalQty.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
+        totalQty.setForeground(new java.awt.Color(255, 255, 255));
+        totalQty.setText("0");
+        totalQty.setToolTipText("");
+        jPanel1.add(totalQty, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 140, 20, 20));
 
         jLabel7.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/backBig.png"))); // NOI18N
@@ -185,29 +258,6 @@ public class FrmRiwayatPenjualan extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void tblPenjualanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPenjualanMouseClicked
-        Object[][] rows = {{"Nama Menu", "QTY", "Harga"}};
-        Object[] cols = {"Name", "Symbol", "Atomic Number", "Atomic Mass", "# of Valence Electrons"};
-        JTable table = new JTable(rows, cols);
-        JOptionPane.showMessageDialog(null, new JScrollPane(table));
-        
-        String[] kolom = {"Invoice","Tanggal", "Total qty", "Total Harga"};
-        ArrayList<Penjualan> list = new Penjualan().getAll();
-        Object rowData[] = new Object[4];
-
-        tblPenjualan.setModel(new DefaultTableModel(new Object[][]{}, kolom));
-
-        for (Penjualan penjualan : list) {
-            rowData[0] = penjualan.getId();
-            rowData[1] = penjualan.getTglPenjualan();
-            rowData[2] = penjualan.getTotalQty();
-            rowData[3] = penjualan.getTotalHarga();
-            
-
-            ((DefaultTableModel) tblPenjualan.getModel()).addRow(rowData);
-        }
-    }//GEN-LAST:event_tblPenjualanMouseClicked
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
         System.exit(0);
@@ -270,13 +320,24 @@ public class FrmRiwayatPenjualan extends javax.swing.JFrame {
     private javax.swing.JLabel btnKategori;
     private javax.swing.JLabel btnMenu;
     private javax.swing.JLabel btnPenjualan;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel labelMenu;
+    private javax.swing.JLabel labelQty;
+    private javax.swing.JLabel labelTotal;
     private javax.swing.JTable tblPenjualan;
+    private javax.swing.JLabel totalGross;
+    private javax.swing.JLabel totalQty;
     // End of variables declaration//GEN-END:variables
 }

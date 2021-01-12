@@ -58,12 +58,15 @@ public class FrmPenjualan extends javax.swing.JFrame {
         header2.setFont(new Font("Berlin Sans FB", Font.PLAIN, 18));
         tblPenjualan.setShowHorizontalLines(true);
         tblPenjualan.setGridColor(new Color(255,255,255));
-        
         cmbKategori.setBackground(new Color(255,255,255));
-        cmbKategori.setForeground(new Color(255,255,255));
-//        this.getContentPane().setBackground(new Color(51, 51, 44));
     }
     
+    private void deletion(){
+        if (labelQty.getText().equalsIgnoreCase("0")) {
+            Penjualan penjualan = new Penjualan().getById(labelId.getText());
+            penjualan.delete();
+        }
+    }
     public void inisialisasi(){
         Date dt = new Date();    
         System.out.println("tes");
@@ -165,8 +168,8 @@ public class FrmPenjualan extends javax.swing.JFrame {
         txtCari = new javax.swing.JTextField();
         jSeparator3 = new javax.swing.JSeparator();
         btnCari = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        btnBayar = new javax.swing.JLabel();
+        btnHapus = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
 
         jToggleButton1.setText("jToggleButton1");
@@ -217,6 +220,7 @@ public class FrmPenjualan extends javax.swing.JFrame {
         cmbKategori.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
         cmbKategori.setForeground(new java.awt.Color(255, 255, 255));
         cmbKategori.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbKategori.setBorder(null);
         cmbKategori.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cmbKategori.setOpaque(false);
         cmbKategori.addActionListener(new java.awt.event.ActionListener() {
@@ -325,6 +329,9 @@ public class FrmPenjualan extends javax.swing.JFrame {
             }
         });
         jPanel1.add(txtCari, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 260, 210, -1));
+
+        jSeparator3.setBackground(new java.awt.Color(255, 255, 255));
+        jSeparator3.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 290, 210, 10));
 
         btnCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/btnCari.png"))); // NOI18N
@@ -336,23 +343,23 @@ public class FrmPenjualan extends javax.swing.JFrame {
         });
         jPanel1.add(btnCari, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 260, -1, -1));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/btnBayar.png"))); // NOI18N
-        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnBayar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/btnBayar.png"))); // NOI18N
+        btnBayar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBayar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel4MouseClicked(evt);
+                btnBayarMouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 150, -1, -1));
+        jPanel1.add(btnBayar, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 150, -1, -1));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/hapus.png"))); // NOI18N
-        jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/hapus.png"))); // NOI18N
+        btnHapus.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnHapus.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel5MouseClicked(evt);
+                btnHapusMouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 110, -1, -1));
+        jPanel1.add(btnHapus, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 110, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/backBig.png"))); // NOI18N
@@ -399,12 +406,14 @@ public class FrmPenjualan extends javax.swing.JFrame {
     }//GEN-LAST:event_cmbKategoriActionPerformed
 
     private void btnMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuMouseClicked
+        deletion();
         FrmMenu menu = new FrmMenu();
         menu.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnMenuMouseClicked
 
     private void btnKategoriMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnKategoriMouseClicked
+        deletion();
         FrmKategori kategori = new FrmKategori();
         kategori.setVisible(true);
         dispose();
@@ -414,6 +423,7 @@ public class FrmPenjualan extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPenjualanMouseClicked
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
+        deletion();
         System.exit(0);
     }//GEN-LAST:event_jLabel6MouseClicked
 
@@ -429,18 +439,18 @@ public class FrmPenjualan extends javax.swing.JFrame {
         cari(txtCari.getText());
     }//GEN-LAST:event_btnCariMouseClicked
 
-    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+    private void btnBayarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBayarMouseClicked
         Penjualan penjualan = new Penjualan();
         penjualan.setId(labelId.getText());
         penjualan.setTglPenjualan(formatter.format(date));
         penjualan.setTotalHarga(Integer.parseInt(labelTotal.getText()));
         penjualan.setTotalQty(Integer.parseInt(labelQty.getText()));
         penjualan.save();
-        JOptionPane.showMessageDialog(this,"Total Pembelian"+penjualan.getTotalHarga());
+        JOptionPane.showMessageDialog(this,"Total Pembelian : Rp "+penjualan.getTotalHarga());
         inisialisasi();
-    }//GEN-LAST:event_jLabel4MouseClicked
+    }//GEN-LAST:event_btnBayarMouseClicked
 
-    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+    private void btnHapusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHapusMouseClicked
         DefaultTableModel model = (DefaultTableModel)tblPenjualan.getModel();
         int row = tblPenjualan.getSelectedRow();
 
@@ -449,7 +459,7 @@ public class FrmPenjualan extends javax.swing.JFrame {
         labelQty.setText(String.valueOf(Integer.parseInt(labelQty.getText())-detail.getQty()));
         detail.delete();
         tampilkanPesanan();
-    }//GEN-LAST:event_jLabel5MouseClicked
+    }//GEN-LAST:event_btnHapusMouseClicked
 
     
     public static void main(String args[]) {
@@ -485,7 +495,9 @@ public class FrmPenjualan extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel btnBayar;
     private javax.swing.JLabel btnCari;
+    private javax.swing.JLabel btnHapus;
     private javax.swing.JLabel btnKategori;
     private javax.swing.JLabel btnMenu;
     private javax.swing.JLabel btnPenjualan;
@@ -493,8 +505,6 @@ public class FrmPenjualan extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
