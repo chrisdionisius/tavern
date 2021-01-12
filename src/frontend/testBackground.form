@@ -40,7 +40,7 @@
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\SIGMA\Videos\tavern.png"/>
+              <Image iconType="3" name="/assets/tavern.png"/>
             </Property>
           </Properties>
           <Constraints>
@@ -52,7 +52,7 @@
         <Component class="javax.swing.JLabel" name="btnClose">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\SIGMA\Videos\close.png"/>
+              <Image iconType="3" name="/assets/close.png"/>
             </Property>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Hand Cursor"/>
@@ -70,7 +70,7 @@
         <Component class="javax.swing.JLabel" name="btnLogin">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\SIGMA\Videos\loginbutton.png"/>
+              <Image iconType="3" name="/assets/loginbutton.png"/>
             </Property>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Hand Cursor"/>

@@ -26,8 +26,7 @@ public class FrmLogin extends javax.swing.JFrame {
         Toolkit tk = getToolkit();
         Dimension size = tk.getScreenSize();
         setLocation(size.width/2-getWidth()/2, size.width/5-getHeight()/5);
-        
-        this.getContentPane().setBackground(new Color(255,255,255));
+        this.getContentPane().setBackground(new Color(57,62,70));
     }
 
     /**

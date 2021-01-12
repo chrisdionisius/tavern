@@ -33,7 +33,10 @@ public class FrmPenjualan extends javax.swing.JFrame {
         setLocation(size.width/2-getWidth()/2, size.width/5-getHeight()/5);
         
         //Color c = new Color(255, 255, 255);
-        this.getContentPane().setBackground(new Color(51, 51, 44));
+        this.setBackground(new Color(0,0,0,0));
+        jPanel1.setBackground(new Color(0,0,0,0));
+        txtCari.setBackground(new Color(0,0,0,0));
+//        this.getContentPane().setBackground(new Color(51, 51, 44));
     }
     
     public void inisialisasi(){
@@ -118,24 +121,28 @@ public class FrmPenjualan extends javax.swing.JFrame {
     private void initComponents() {
 
         jToggleButton1 = new javax.swing.JToggleButton();
+        jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         labelId = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         labelTotal = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblMenu = new javax.swing.JTable();
-        btnHapus = new javax.swing.JButton();
-        btnBayar = new javax.swing.JButton();
+        labelQty = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        cmbKategori = new javax.swing.JComboBox<>();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblPenjualan = new javax.swing.JTable();
-        jLabel2 = new javax.swing.JLabel();
-        labelQty = new javax.swing.JLabel();
-        Menu = new javax.swing.JButton();
-        KategoriBtn = new javax.swing.JButton();
-        BtnDisabled = new javax.swing.JButton();
-        cmbKategori = new javax.swing.JComboBox<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblMenu = new javax.swing.JTable();
+        btnMenu = new javax.swing.JLabel();
+        btnKategori = new javax.swing.JLabel();
+        btnPenjualan = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         txtCari = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        jSeparator3 = new javax.swing.JSeparator();
+        btnCari = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
 
         jToggleButton1.setText("jToggleButton1");
 
@@ -143,53 +150,54 @@ public class FrmPenjualan extends javax.swing.JFrame {
         setTitle("Form Penjualan");
         setBackground(new java.awt.Color(255, 255, 255));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setMinimumSize(new java.awt.Dimension(800, 620));
+        setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("No Nota");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, 70, -1));
 
+        labelId.setBackground(new java.awt.Color(255, 255, 255));
+        labelId.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
         labelId.setForeground(new java.awt.Color(255, 255, 255));
+        labelId.setText("0");
+        jPanel1.add(labelId, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, 160, 17));
 
+        jLabel3.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Total");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, 64, -1));
 
+        labelTotal.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
         labelTotal.setForeground(new java.awt.Color(255, 255, 255));
         labelTotal.setText("0");
+        jPanel1.add(labelTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 70, -1));
 
-        tblMenu.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        tblMenu.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblMenuMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(tblMenu);
+        labelQty.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
+        labelQty.setForeground(new java.awt.Color(255, 255, 255));
+        labelQty.setText("0");
+        jPanel1.add(labelQty, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 70, -1));
 
-        btnHapus.setBackground(new java.awt.Color(15, 29, 91));
-        btnHapus.setForeground(new java.awt.Color(255, 255, 255));
-        btnHapus.setText("Hapus");
-        btnHapus.addActionListener(new java.awt.event.ActionListener() {
+        jLabel2.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Qty");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 64, -1));
+
+        cmbKategori.setForeground(new java.awt.Color(255, 255, 255));
+        cmbKategori.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbKategori.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cmbKategori.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnHapusActionPerformed(evt);
+                cmbKategoriActionPerformed(evt);
             }
         });
-
-        btnBayar.setBackground(new java.awt.Color(15, 29, 91));
-        btnBayar.setForeground(new java.awt.Color(255, 255, 255));
-        btnBayar.setText("Bayar");
-        btnBayar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBayarActionPerformed(evt);
-            }
-        });
+        jPanel1.add(cmbKategori, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 200, -1));
 
         tblPenjualan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -209,143 +217,116 @@ public class FrmPenjualan extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tblPenjualan);
 
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Qty");
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 110, 325, 110));
 
-        labelQty.setForeground(new java.awt.Color(255, 255, 255));
-        labelQty.setText("0");
-
-        Menu.setBackground(new java.awt.Color(15, 29, 91));
-        Menu.setForeground(new java.awt.Color(255, 255, 255));
-        Menu.setText("Form Menu");
-        Menu.setPreferredSize(new java.awt.Dimension(110, 40));
-        Menu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MenuActionPerformed(evt);
+        tblMenu.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tblMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tblMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblMenuMouseClicked(evt);
             }
         });
+        jScrollPane1.setViewportView(tblMenu);
 
-        KategoriBtn.setBackground(new java.awt.Color(15, 29, 91));
-        KategoriBtn.setForeground(new java.awt.Color(255, 255, 255));
-        KategoriBtn.setText("Form Kategori");
-        KategoriBtn.setPreferredSize(new java.awt.Dimension(110, 40));
-        KategoriBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                KategoriBtnActionPerformed(evt);
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 690, 110));
+
+        btnMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/btnMenu.png"))); // NOI18N
+        btnMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMenuMouseClicked(evt);
             }
         });
+        jPanel1.add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
 
-        BtnDisabled.setBackground(new java.awt.Color(51, 51, 44));
-        BtnDisabled.setForeground(new java.awt.Color(255, 255, 255));
-        BtnDisabled.setText("Form Penjualan");
-        BtnDisabled.setEnabled(false);
-        BtnDisabled.setPreferredSize(new java.awt.Dimension(110, 40));
-        BtnDisabled.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnDisabledActionPerformed(evt);
+        btnKategori.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/btnKategori.png"))); // NOI18N
+        btnKategori.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnKategori.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnKategoriMouseClicked(evt);
             }
         });
+        jPanel1.add(btnKategori, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, -1, -1));
 
-        cmbKategori.setForeground(new java.awt.Color(255, 255, 255));
-        cmbKategori.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cmbKategori.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbKategoriActionPerformed(evt);
+        btnPenjualan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/btnPenjualan.png"))); // NOI18N
+        btnPenjualan.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnPenjualan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPenjualanMouseClicked(evt);
             }
         });
+        jPanel1.add(btnPenjualan, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 20, -1, -1));
 
-        jButton1.setBackground(new java.awt.Color(15, 29, 91));
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Cari");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/close.png"))); // NOI18N
+        jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel6MouseClicked(evt);
             }
         });
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 40, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(Menu, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(KategoriBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(BtnDisabled, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(labelTotal)
-                                    .addComponent(labelId, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(labelQty)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addComponent(btnHapus)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnBayar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtCari, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton1)
-                                .addGap(29, 29, 29)
-                                .addComponent(cmbKategori, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BtnDisabled, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(KategoriBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Menu, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnBayar, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(labelId, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(labelTotal))))
-                .addGap(1, 1, 1)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(labelQty))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmbKategori, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addGap(16, 16, 16)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25))
-        );
+        txtCari.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        txtCari.setForeground(new java.awt.Color(255, 255, 255));
+        txtCari.setBorder(null);
+        txtCari.setOpaque(false);
+        txtCari.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtCariFocusGained(evt);
+            }
+        });
+        txtCari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCariActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtCari, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 260, 210, -1));
+
+        jSeparator3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 290, 210, 10));
+
+        btnCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/btnCari.png"))); // NOI18N
+        btnCari.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCari.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCariMouseClicked(evt);
+            }
+        });
+        jPanel1.add(btnCari, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 260, -1, -1));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/btnBayar.png"))); // NOI18N
+        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 150, -1, -1));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/hapus.png"))); // NOI18N
+        jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel5MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 110, -1, -1));
+
+        jLabel7.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/backBig.png"))); // NOI18N
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 610));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 610));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -353,11 +334,12 @@ public class FrmPenjualan extends javax.swing.JFrame {
     private void tblMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblMenuMouseClicked
         DefaultTableModel model = (DefaultTableModel)tblMenu.getModel();
         int row = tblMenu.getSelectedRow();
-        
+        int qty = 0;
         Menu menu = new Menu();        
         DetailPenjualan detail = new DetailPenjualan();
         menu = menu.getById(Integer.parseInt(model.getValueAt(row, 0).toString()));
-        int qty = Integer.parseInt(JOptionPane.showInputDialog(this, "Masukkan Jumlah"));
+        
+        qty = Integer.parseInt(JOptionPane.showInputDialog(this, "Masukkan Jumlah"));
         
         detail.setId((labelId.getText()));
         detail.setTgl_penjualan(formatter.format(date));
@@ -378,35 +360,43 @@ public class FrmPenjualan extends javax.swing.JFrame {
         detail = detail.getById((model.getValueAt(row, 0).toString()));
     }//GEN-LAST:event_tblPenjualanMouseClicked
 
-    private void btnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusActionPerformed
-        DefaultTableModel model = (DefaultTableModel)tblPenjualan.getModel();
-        int row = tblPenjualan.getSelectedRow();
+    private void cmbKategoriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbKategoriActionPerformed
+        Object selected = cmbKategori.getSelectedItem();
+        cari(String.valueOf(selected));
+    }//GEN-LAST:event_cmbKategoriActionPerformed
 
-        DetailPenjualan detail = new DetailPenjualan().getById(model.getValueAt(row, 0).toString());
-        labelTotal.setText(String.valueOf(Integer.parseInt(labelTotal.getText())-detail.getHarga()));
-        labelQty.setText(String.valueOf(Integer.parseInt(labelQty.getText())-detail.getQty()));
-        detail.delete();
-        tampilkanPesanan();
-    }//GEN-LAST:event_btnHapusActionPerformed
-
-    private void MenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuActionPerformed
+    private void btnMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuMouseClicked
         FrmMenu menu = new FrmMenu();
         menu.setVisible(true);
         dispose();
-    }//GEN-LAST:event_MenuActionPerformed
+    }//GEN-LAST:event_btnMenuMouseClicked
 
-    private void KategoriBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KategoriBtnActionPerformed
+    private void btnKategoriMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnKategoriMouseClicked
         FrmKategori kategori = new FrmKategori();
         kategori.setVisible(true);
         dispose();
-    }//GEN-LAST:event_KategoriBtnActionPerformed
+    }//GEN-LAST:event_btnKategoriMouseClicked
 
-    private void BtnDisabledActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDisabledActionPerformed
-        
-    }//GEN-LAST:event_BtnDisabledActionPerformed
+    private void btnPenjualanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPenjualanMouseClicked
+    }//GEN-LAST:event_btnPenjualanMouseClicked
 
-    private void btnBayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBayarActionPerformed
-                  
+    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_jLabel6MouseClicked
+
+    private void txtCariFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCariFocusGained
+        txtCari.setText("");
+    }//GEN-LAST:event_txtCariFocusGained
+
+    private void txtCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCariActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCariActionPerformed
+
+    private void btnCariMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCariMouseClicked
+        cari(txtCari.getText());
+    }//GEN-LAST:event_btnCariMouseClicked
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
         Penjualan penjualan = new Penjualan();
         penjualan.setId(labelId.getText());
         penjualan.setTglPenjualan(formatter.format(date));
@@ -415,16 +405,18 @@ public class FrmPenjualan extends javax.swing.JFrame {
         penjualan.save();
         JOptionPane.showMessageDialog(this,"Total Pembelian"+penjualan.getTotalHarga());
         inisialisasi();
-    }//GEN-LAST:event_btnBayarActionPerformed
+    }//GEN-LAST:event_jLabel4MouseClicked
 
-    private void cmbKategoriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbKategoriActionPerformed
-        Object selected = cmbKategori.getSelectedItem();
-        cari(String.valueOf(selected));
-    }//GEN-LAST:event_cmbKategoriActionPerformed
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+        DefaultTableModel model = (DefaultTableModel)tblPenjualan.getModel();
+        int row = tblPenjualan.getSelectedRow();
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        cari(txtCari.getText());
-    }//GEN-LAST:event_jButton1ActionPerformed
+        DetailPenjualan detail = new DetailPenjualan().getById(model.getValueAt(row, 0).toString());
+        labelTotal.setText(String.valueOf(Integer.parseInt(labelTotal.getText())-detail.getHarga()));
+        labelQty.setText(String.valueOf(Integer.parseInt(labelQty.getText())-detail.getQty()));
+        detail.delete();
+        tampilkanPesanan();
+    }//GEN-LAST:event_jLabel5MouseClicked
 
     
     public static void main(String args[]) {
@@ -460,18 +452,22 @@ public class FrmPenjualan extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BtnDisabled;
-    private javax.swing.JButton KategoriBtn;
-    private javax.swing.JButton Menu;
-    private javax.swing.JButton btnBayar;
-    private javax.swing.JButton btnHapus;
+    private javax.swing.JLabel btnCari;
+    private javax.swing.JLabel btnKategori;
+    private javax.swing.JLabel btnMenu;
+    private javax.swing.JLabel btnPenjualan;
     private javax.swing.JComboBox<String> cmbKategori;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JLabel labelId;
     private javax.swing.JLabel labelQty;

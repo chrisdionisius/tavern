@@ -16,14 +16,19 @@ public class FrmKategori extends javax.swing.JFrame {
         Toolkit tk = getToolkit();
         Dimension size = tk.getScreenSize();
         setLocation(size.width/2-getWidth()/2, size.width/5-getHeight()/5);
-        
-        this.getContentPane().setBackground(new Color(255,255,255));
+        this.setBackground(new Color(0,0,0,0));
+        txtCari.setBackground(new Color(0,0,0,0));
+        txtIdKategori.setBackground(new Color(0,0,0,0));
+        txtNama.setBackground(new Color(0,0,0,0));
+        jPanel1.setBackground(new Color(0,0,0,0));
+//        this.getContentPane().setBackground(new Color(255,255,255));
     }
 
     public void kosongkanForm() {
         txtIdKategori.setText("0");
-        txtNama.setText("");
-        txtCari.setText("");
+        txtNama.setText("Nama kategori");
+        txtCari.setText("Cari");
+        
     }
     
     public void tampilkanData(){
@@ -68,22 +73,25 @@ public class FrmKategori extends javax.swing.JFrame {
 
         jTextField2 = new javax.swing.JTextField();
         btnSimpanKategori1 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblKategori = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
+        btnCari = new javax.swing.JLabel();
+        btnHapus = new javax.swing.JLabel();
+        btnSimpan = new javax.swing.JLabel();
+        btnTambah = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        btnMenu = new javax.swing.JLabel();
+        btnPenjualan = new javax.swing.JLabel();
+        txtCari = new javax.swing.JTextField();
+        jSeparator3 = new javax.swing.JSeparator();
+        txtNama = new javax.swing.JTextField();
         txtIdKategori = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        txtNama = new javax.swing.JTextField();
-        btnSimpan = new javax.swing.JButton();
-        btnHapus = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        txtCari = new javax.swing.JTextField();
-        btnCari = new javax.swing.JButton();
-        btnTambah = new javax.swing.JButton();
-        jLabel8 = new javax.swing.JLabel();
-        Menu = new javax.swing.JButton();
-        Penjualan = new javax.swing.JButton();
-        BtnDisabled = new javax.swing.JButton();
+        jSeparator4 = new javax.swing.JSeparator();
+        jSeparator5 = new javax.swing.JSeparator();
+        jLabel7 = new javax.swing.JLabel();
 
         jTextField2.setText("jTextField1");
 
@@ -95,6 +103,12 @@ public class FrmKategori extends javax.swing.JFrame {
         });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tblKategori.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -107,6 +121,7 @@ public class FrmKategori extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblKategori.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         tblKategori.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblKategoriMouseClicked(evt);
@@ -114,188 +129,169 @@ public class FrmKategori extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblKategori);
 
-        jLabel1.setText("ID");
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 180, 360, 220));
+
+        btnCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/btnCari.png"))); // NOI18N
+        btnCari.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCari.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCariMouseClicked(evt);
+            }
+        });
+        jPanel1.add(btnCari, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 130, -1, -1));
+
+        btnHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/btnHapus.png"))); // NOI18N
+        btnHapus.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnHapus.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnHapusMouseClicked(evt);
+            }
+        });
+        jPanel1.add(btnHapus, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 270, -1, -1));
+
+        btnSimpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/btnSimpan.png"))); // NOI18N
+        btnSimpan.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSimpan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSimpanMouseClicked(evt);
+            }
+        });
+        jPanel1.add(btnSimpan, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 270, -1, -1));
+
+        btnTambah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/btnTambah.png"))); // NOI18N
+        btnTambah.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnTambah.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnTambahMouseClicked(evt);
+            }
+        });
+        jPanel1.add(btnTambah, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, -1, -1));
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/btnKategori.png"))); // NOI18N
+        jLabel9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, -1, -1));
+
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/close.png"))); // NOI18N
+        jLabel13.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel13.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel13MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 40, -1, -1));
+
+        btnMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/btnMenu.png"))); // NOI18N
+        btnMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMenuMouseClicked(evt);
+            }
+        });
+        jPanel1.add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
+
+        btnPenjualan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/btnPenjualan.png"))); // NOI18N
+        btnPenjualan.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnPenjualan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPenjualanMouseClicked(evt);
+            }
+        });
+        jPanel1.add(btnPenjualan, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 20, -1, -1));
+
+        txtCari.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        txtCari.setForeground(new java.awt.Color(255, 255, 255));
+        txtCari.setText("Cari");
+        txtCari.setBorder(null);
+        txtCari.setName(""); // NOI18N
+        txtCari.setOpaque(false);
+        jPanel1.add(txtCari, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 130, 210, -1));
+        txtCari.getAccessibleContext().setAccessibleName("txtCariKategori");
+
+        jSeparator3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, 120, 10));
+
+        txtNama.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        txtNama.setForeground(new java.awt.Color(255, 255, 255));
+        txtNama.setText("Nama kategori");
+        txtNama.setBorder(null);
+        txtNama.setOpaque(false);
+        jPanel1.add(txtNama, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, 280, -1));
+        txtNama.getAccessibleContext().setAccessibleName("txtNamaKategori");
 
         txtIdKategori.setEditable(false);
+        txtIdKategori.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
+        txtIdKategori.setBorder(null);
         txtIdKategori.setEnabled(false);
-
-        jLabel2.setText("Nama");
-
-        btnSimpan.setText("Simpan");
-        btnSimpan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSimpanActionPerformed(evt);
-            }
-        });
-
-        btnHapus.setText("Hapus");
-        btnHapus.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnHapusActionPerformed(evt);
-            }
-        });
-
-        jLabel3.setText("Cari");
-
-        txtCari.setName(""); // NOI18N
-
-        btnCari.setText("cari");
-        btnCari.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCariActionPerformed(evt);
-            }
-        });
-
-        btnTambah.setText("Tambah");
-        btnTambah.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTambahActionPerformed(evt);
-            }
-        });
-
-        jLabel8.setFont(new java.awt.Font("Century", 1, 14)); // NOI18N
-        jLabel8.setText("Form Kategori");
-
-        Menu.setText("Form Menu");
-        Menu.setPreferredSize(new java.awt.Dimension(110, 40));
-        Menu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MenuActionPerformed(evt);
-            }
-        });
-
-        Penjualan.setText("Form Penjualan");
-        Penjualan.setPreferredSize(new java.awt.Dimension(110, 40));
-        Penjualan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PenjualanActionPerformed(evt);
-            }
-        });
-
-        BtnDisabled.setText("Form Kategori");
-        BtnDisabled.setEnabled(false);
-        BtnDisabled.setPreferredSize(new java.awt.Dimension(110, 40));
-        BtnDisabled.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnDisabledActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtNama)
-                            .addComponent(txtIdKategori, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnSimpan)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnHapus)
-                                .addGap(4, 4, 4))
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtCari))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(13, 13, 13)
-                                .addComponent(jLabel8)
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnCari, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnTambah))
-                        .addGap(34, 34, 34))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(Menu, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(BtnDisabled, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Penjualan, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(86, Short.MAX_VALUE))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Penjualan, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Menu, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BtnDisabled, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel8)
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtIdKategori, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel3)
-                    .addComponent(txtCari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCari))
-                .addGap(15, 15, 15)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtNama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)
-                    .addComponent(btnSimpan)
-                    .addComponent(btnHapus)
-                    .addComponent(btnTambah))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
-        );
-
+        txtIdKategori.setOpaque(false);
+        jPanel1.add(txtIdKategori, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 180, 104, -1));
         txtIdKategori.getAccessibleContext().setAccessibleName("txtIdKategori");
-        txtNama.getAccessibleContext().setAccessibleName("txtNamaKategori");
-        btnSimpan.getAccessibleContext().setAccessibleName("btnSimpan");
-        txtCari.getAccessibleContext().setAccessibleName("txtCariKategori");
+
+        jLabel2.setFont(new java.awt.Font("Berlin Sans FB", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("#");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, 20, -1));
+
+        jSeparator4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 160, 210, 10));
+
+        jSeparator5.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, 280, 10));
+
+        jLabel7.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/backBig.png"))); // NOI18N
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 610));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 620));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariActionPerformed
-        cari(txtCari.getText());
-    }//GEN-LAST:event_btnCariActionPerformed
+    private void btnSimpanKategori1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanKategori1ActionPerformed
+        
+    }//GEN-LAST:event_btnSimpanKategori1ActionPerformed
 
-    private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanActionPerformed
+    private void btnPenjualanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPenjualanMouseClicked
+        FrmPenjualan penjualan = new FrmPenjualan();
+        penjualan.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnPenjualanMouseClicked
+
+    private void btnMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuMouseClicked
+        FrmMenu menu = new FrmMenu();
+        menu.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnMenuMouseClicked
+
+    private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_jLabel13MouseClicked
+
+    private void tblKategoriMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblKategoriMouseClicked
+        DefaultTableModel model = (DefaultTableModel)tblKategori.getModel();
+        int row = tblKategori.getSelectedRow();
+
+        txtIdKategori.setText(model.getValueAt(row, 0).toString());
+        txtNama.setText(model.getValueAt(row, 1).toString());
+    }//GEN-LAST:event_tblKategoriMouseClicked
+
+    private void btnCariMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCariMouseClicked
+        cari(txtCari.getText());
+    }//GEN-LAST:event_btnCariMouseClicked
+
+    private void btnTambahMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTambahMouseClicked
+        kosongkanForm();
+    }//GEN-LAST:event_btnTambahMouseClicked
+
+    private void btnSimpanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSimpanMouseClicked
         Kategori kat = new Kategori();
         kat.setId(Integer.parseInt(txtIdKategori.getText()));
         kat.setNama(txtNama.getText());
         kat.save();
         txtIdKategori.setText(Integer.toString(kat.getId()));
         tampilkanData();
-    }//GEN-LAST:event_btnSimpanActionPerformed
+    }//GEN-LAST:event_btnSimpanMouseClicked
 
-    private void btnSimpanKategori1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanKategori1ActionPerformed
-        
-    }//GEN-LAST:event_btnSimpanKategori1ActionPerformed
-
-    private void btnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahActionPerformed
-        kosongkanForm();
-    }//GEN-LAST:event_btnTambahActionPerformed
-
-    private void tblKategoriMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblKategoriMouseClicked
-        DefaultTableModel model = (DefaultTableModel)tblKategori.getModel();
-        int row = tblKategori.getSelectedRow();
-        
-        txtIdKategori.setText(model.getValueAt(row, 0).toString());
-        txtNama.setText(model.getValueAt(row, 1).toString());
-    }//GEN-LAST:event_tblKategoriMouseClicked
-
-    private void btnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusActionPerformed
+    private void btnHapusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHapusMouseClicked
         DefaultTableModel model = (DefaultTableModel)tblKategori.getModel();
         int row = tblKategori.getSelectedRow();
         
@@ -303,23 +299,7 @@ public class FrmKategori extends javax.swing.JFrame {
         kat.delete();
         kosongkanForm();
         tampilkanData();
-    }//GEN-LAST:event_btnHapusActionPerformed
-
-    private void MenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuActionPerformed
-        FrmMenu menu = new FrmMenu();
-        menu.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_MenuActionPerformed
-
-    private void PenjualanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PenjualanActionPerformed
-        FrmPenjualan penjualan = new FrmPenjualan();
-        penjualan.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_PenjualanActionPerformed
-
-    private void BtnDisabledActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDisabledActionPerformed
-
-    }//GEN-LAST:event_BtnDisabledActionPerformed
+    }//GEN-LAST:event_btnHapusMouseClicked
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -354,19 +334,22 @@ public class FrmKategori extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BtnDisabled;
-    private javax.swing.JButton Menu;
-    private javax.swing.JButton Penjualan;
-    private javax.swing.JButton btnCari;
-    private javax.swing.JButton btnHapus;
-    private javax.swing.JButton btnSimpan;
+    private javax.swing.JLabel btnCari;
+    private javax.swing.JLabel btnHapus;
+    private javax.swing.JLabel btnMenu;
+    private javax.swing.JLabel btnPenjualan;
+    private javax.swing.JLabel btnSimpan;
     private javax.swing.JButton btnSimpanKategori1;
-    private javax.swing.JButton btnTambah;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel btnTambah;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTable tblKategori;
     private javax.swing.JTextField txtCari;

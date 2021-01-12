@@ -60,10 +60,10 @@ public class testBackground extends javax.swing.JFrame {
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\SIGMA\\Videos\\tavern.png")); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/tavern.png"))); // NOI18N
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 80, -1, -1));
 
-        btnClose.setIcon(new javax.swing.ImageIcon("C:\\Users\\SIGMA\\Videos\\close.png")); // NOI18N
+        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/close.png"))); // NOI18N
         btnClose.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnClose.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -72,7 +72,7 @@ public class testBackground extends javax.swing.JFrame {
         });
         jPanel2.add(btnClose, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 70, -1, -1));
 
-        btnLogin.setIcon(new javax.swing.ImageIcon("C:\\Users\\SIGMA\\Videos\\loginbutton.png")); // NOI18N
+        btnLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/loginbutton.png"))); // NOI18N
         btnLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnLogin.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
