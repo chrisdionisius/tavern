@@ -80,11 +80,7 @@ public class testBackground extends javax.swing.JFrame {
             }
         });
         jPanel2.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 350, -1, -1));
-
-        jSeparator2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 330, 330, 20));
-
-        jSeparator1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 230, 330, 20));
 
         passField.setBackground(new java.awt.Color(102, 102, 102));

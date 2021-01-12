@@ -3,10 +3,12 @@ package frontend;
 import backend.*;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Toolkit;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.table.JTableHeader;
 
 public class FrmMenu extends javax.swing.JFrame {
 
@@ -28,6 +30,17 @@ public class FrmMenu extends javax.swing.JFrame {
         txtScMenu.setBackground(new Color(0,0,0,0));
         txtCari.setBackground(new Color(0,0,0,0));
         jPanel1.setBackground(new Color(0,0,0,0));
+        cmbKategori.setBackground(new Color(255,255,255));
+        cmbKategori.setForeground(new Color(255,255,255));
+        jScrollPane1.getViewport().setBackground(new Color(0,0,0,0));
+        tblMenu.setBackground(new Color(0,0,0,0));
+        jScrollPane1.setViewportBorder(null);
+        JTableHeader header = tblMenu.getTableHeader();
+        header.setBackground(new Color(0,0,0,0));
+        header.setForeground(new Color(255,255,255));
+        header.setFont(new Font("Berlin Sans FB", Font.PLAIN, 18));
+        tblMenu.setShowHorizontalLines(true);
+        tblMenu.setGridColor(new Color(255,255,255));
 //        this.getContentPane().setBackground(new Color(255,255,255));
     }
 
@@ -41,7 +54,7 @@ public class FrmMenu extends javax.swing.JFrame {
     }
 
     public void tampilkanData() {
-        String[] kolom = {"ID", "Nama Menu", "Jenis", "Recipe Cost", "Serve Cost"};
+        String[] kolom = {"ID", "Menu", "Jenis", "Recipe Cost", "Serve Cost"};
         ArrayList<Menu> list = new Menu().getAll();
         Object rowData[] = new Object[5];
 
@@ -133,6 +146,11 @@ public class FrmMenu extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jScrollPane1.setBorder(null);
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(450, 450));
+
+        tblMenu.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
+        tblMenu.setForeground(new java.awt.Color(255, 255, 255));
         tblMenu.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -145,6 +163,7 @@ public class FrmMenu extends javax.swing.JFrame {
             }
         ));
         tblMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tblMenu.setOpaque(false);
         tblMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblMenuMouseClicked(evt);
@@ -152,7 +171,7 @@ public class FrmMenu extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblMenu);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 170, 400, 150));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 370, 590, 150));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/close.png"))); // NOI18N
         jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -193,7 +212,7 @@ public class FrmMenu extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Rp");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 20, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 140, 20, -1));
 
         txtId.setEditable(false);
         txtId.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
@@ -223,11 +242,13 @@ public class FrmMenu extends javax.swing.JFrame {
                 txtNamaActionPerformed(evt);
             }
         });
-        jPanel1.add(txtNama, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 280, -1));
+        jPanel1.add(txtNama, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 280, -1));
 
         cmbKategori.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
         cmbKategori.setForeground(new java.awt.Color(255, 255, 255));
         cmbKategori.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbKategori.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        cmbKategori.setOpaque(false);
         cmbKategori.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbKategoriActionPerformed(evt);
@@ -249,7 +270,7 @@ public class FrmMenu extends javax.swing.JFrame {
                 txtCariActionPerformed(evt);
             }
         });
-        jPanel1.add(txtCari, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 130, 210, -1));
+        jPanel1.add(txtCari, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 330, 210, -1));
 
         txtScMenu.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         txtScMenu.setForeground(new java.awt.Color(255, 255, 255));
@@ -261,7 +282,7 @@ public class FrmMenu extends javax.swing.JFrame {
                 txtScMenuFocusGained(evt);
             }
         });
-        jPanel1.add(txtScMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, 250, -1));
+        jPanel1.add(txtScMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 140, 250, -1));
 
         txtRcMenu.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         txtRcMenu.setForeground(new java.awt.Color(255, 255, 255));
@@ -273,16 +294,10 @@ public class FrmMenu extends javax.swing.JFrame {
                 txtRcMenuFocusGained(evt);
             }
         });
-        jPanel1.add(txtRcMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, 250, -1));
-
-        jSeparator1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 280, 10));
-
-        jSeparator2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 280, 10));
-
-        jSeparator3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 160, 210, 10));
+        jPanel1.add(txtRcMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 190, 250, -1));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 170, 280, 10));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 220, 280, 10));
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 360, 210, 10));
 
         jLabel2.setFont(new java.awt.Font("Berlin Sans FB", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -292,10 +307,8 @@ public class FrmMenu extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Rp");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 20, -1));
-
-        jSeparator4.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 280, 10));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 190, 20, -1));
+        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 280, 10));
 
         btnCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/btnCari.png"))); // NOI18N
         btnCari.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -304,7 +317,7 @@ public class FrmMenu extends javax.swing.JFrame {
                 btnCariMouseClicked(evt);
             }
         });
-        jPanel1.add(btnCari, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 130, -1, -1));
+        jPanel1.add(btnCari, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 330, -1, -1));
 
         btnTambah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/btnTambah.png"))); // NOI18N
         btnTambah.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -313,7 +326,7 @@ public class FrmMenu extends javax.swing.JFrame {
                 btnTambahMouseClicked(evt);
             }
         });
-        jPanel1.add(btnTambah, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, -1, -1));
+        jPanel1.add(btnTambah, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, -1, -1));
 
         btnSimpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/btnSimpan.png"))); // NOI18N
         btnSimpan.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -327,7 +340,7 @@ public class FrmMenu extends javax.swing.JFrame {
                 btnSimpanKeyPressed(evt);
             }
         });
-        jPanel1.add(btnSimpan, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 310, -1, -1));
+        jPanel1.add(btnSimpan, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 250, -1, -1));
 
         btnHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/btnHapus.png"))); // NOI18N
         btnHapus.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -336,7 +349,7 @@ public class FrmMenu extends javax.swing.JFrame {
                 btnHapusMouseClicked(evt);
             }
         });
-        jPanel1.add(btnHapus, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 310, -1, -1));
+        jPanel1.add(btnHapus, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 250, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/backBig.png"))); // NOI18N

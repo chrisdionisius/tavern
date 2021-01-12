@@ -3,9 +3,16 @@ package frontend;
 import backend.*;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Toolkit;
 import java.util.ArrayList;
+import javax.swing.BorderFactory;
+import javax.swing.border.Border;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.EtchedBorder;
+import javax.swing.plaf.TableUI;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 
 public class FrmKategori extends javax.swing.JFrame {
 
@@ -21,6 +28,17 @@ public class FrmKategori extends javax.swing.JFrame {
         txtIdKategori.setBackground(new Color(0,0,0,0));
         txtNama.setBackground(new Color(0,0,0,0));
         jPanel1.setBackground(new Color(0,0,0,0));
+        jScrollPane1.getViewport().setBackground(new Color(0,0,0,0));
+        tblKategori.setBackground(new Color(0,0,0,0));
+        jScrollPane1.setViewportBorder(null);
+        JTableHeader header = tblKategori.getTableHeader();
+        header.setBackground(new Color(0,0,0,0));
+        header.setForeground(new Color(255,255,255));
+        header.setFont(new Font("Berlin Sans FB", Font.PLAIN, 20));
+        tblKategori.setShowHorizontalLines(true);
+        tblKategori.setGridColor(new Color(255,255,255));
+        jSeparator1.setBackground(new Color(255,255,255));
+        jSeparator1.setSize(50, 15);
 //        this.getContentPane().setBackground(new Color(255,255,255));
     }
 
@@ -32,9 +50,12 @@ public class FrmKategori extends javax.swing.JFrame {
     }
     
     public void tampilkanData(){
-        String []kolom={"ID","Nama"};
+        String []kolom={"#","Nama"};
         ArrayList<Kategori> list =new Kategori().getAll();
         Object rowData[] = new Object[2];
+        
+        
+        
         
         tblKategori.setModel(new DefaultTableModel(new Object[][]{}, kolom));
         
@@ -47,7 +68,7 @@ public class FrmKategori extends javax.swing.JFrame {
     }
     
      public void cari(String keyword){
-        String []kolom={"ID","Nama"};
+        String []kolom={"#","Nama"};
         ArrayList<Kategori> list =new Kategori().search(keyword);
         Object rowData[] = new Object[2];
         
@@ -74,6 +95,7 @@ public class FrmKategori extends javax.swing.JFrame {
         jTextField2 = new javax.swing.JTextField();
         btnSimpanKategori1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
+        jSeparator1 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblKategori = new javax.swing.JTable();
         btnCari = new javax.swing.JLabel();
@@ -81,6 +103,7 @@ public class FrmKategori extends javax.swing.JFrame {
         btnSimpan = new javax.swing.JLabel();
         btnTambah = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         btnMenu = new javax.swing.JLabel();
         btnPenjualan = new javax.swing.JLabel();
@@ -110,6 +133,17 @@ public class FrmKategori extends javax.swing.JFrame {
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
+        jSeparator1.setPreferredSize(new java.awt.Dimension(50, 20));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 200, 380, 10));
+
+        jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane1.setBorder(null);
+        jScrollPane1.setForeground(new java.awt.Color(255, 255, 255));
+        jScrollPane1.setOpaque(false);
+
+        tblKategori.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
+        tblKategori.setForeground(new java.awt.Color(255, 255, 255));
         tblKategori.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -122,6 +156,7 @@ public class FrmKategori extends javax.swing.JFrame {
             }
         ));
         tblKategori.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tblKategori.setOpaque(false);
         tblKategori.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblKategoriMouseClicked(evt);
@@ -169,7 +204,16 @@ public class FrmKategori extends javax.swing.JFrame {
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/btnKategori.png"))); // NOI18N
         jLabel9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, -1, -1));
+        jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel9MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 420, -1, -1));
+
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/btnKategori.png"))); // NOI18N
+        jLabel10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, -1, -1));
 
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/close.png"))); // NOI18N
         jLabel13.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -204,10 +248,19 @@ public class FrmKategori extends javax.swing.JFrame {
         txtCari.setBorder(null);
         txtCari.setName(""); // NOI18N
         txtCari.setOpaque(false);
+        txtCari.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtCariFocusGained(evt);
+            }
+        });
+        txtCari.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtCariMouseClicked(evt);
+            }
+        });
         jPanel1.add(txtCari, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 130, 210, -1));
         txtCari.getAccessibleContext().setAccessibleName("txtCariKategori");
 
-        jSeparator3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, 120, 10));
 
         txtNama.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
@@ -215,6 +268,11 @@ public class FrmKategori extends javax.swing.JFrame {
         txtNama.setText("Nama kategori");
         txtNama.setBorder(null);
         txtNama.setOpaque(false);
+        txtNama.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtNamaFocusGained(evt);
+            }
+        });
         jPanel1.add(txtNama, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, 280, -1));
         txtNama.getAccessibleContext().setAccessibleName("txtNamaKategori");
 
@@ -230,11 +288,7 @@ public class FrmKategori extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("#");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, 20, -1));
-
-        jSeparator4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 160, 210, 10));
-
-        jSeparator5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, 280, 10));
 
         jLabel7.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
@@ -301,6 +355,24 @@ public class FrmKategori extends javax.swing.JFrame {
         tampilkanData();
     }//GEN-LAST:event_btnHapusMouseClicked
 
+    private void txtCariMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtCariMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCariMouseClicked
+
+    private void txtCariFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCariFocusGained
+        txtCari.setText("");
+    }//GEN-LAST:event_txtCariFocusGained
+
+    private void txtNamaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNamaFocusGained
+        txtNama.setText("");
+    }//GEN-LAST:event_txtNamaFocusGained
+
+    private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
+        FrmRiwayatPenjualan riwayat = new FrmRiwayatPenjualan();
+        riwayat.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jLabel9MouseClicked
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -341,12 +413,14 @@ public class FrmKategori extends javax.swing.JFrame {
     private javax.swing.JLabel btnSimpan;
     private javax.swing.JButton btnSimpanKategori1;
     private javax.swing.JLabel btnTambah;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;

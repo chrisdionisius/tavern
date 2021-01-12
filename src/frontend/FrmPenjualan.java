@@ -9,12 +9,14 @@ import javax.swing.JOptionPane;
 import backend.*;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Toolkit;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.table.JTableHeader;
 
 public class FrmPenjualan extends javax.swing.JFrame {
     /**
@@ -36,6 +38,29 @@ public class FrmPenjualan extends javax.swing.JFrame {
         this.setBackground(new Color(0,0,0,0));
         jPanel1.setBackground(new Color(0,0,0,0));
         txtCari.setBackground(new Color(0,0,0,0));
+        
+        jScrollPane1.getViewport().setBackground(new Color(0,0,0,0));
+        tblMenu.setBackground(new Color(0,0,0,0));
+        jScrollPane1.setViewportBorder(null);
+        JTableHeader header = tblMenu.getTableHeader();
+        header.setBackground(new Color(0,0,0,0));
+        header.setForeground(new Color(255,255,255));
+        header.setFont(new Font("Berlin Sans FB", Font.PLAIN, 18));
+        tblMenu.setShowHorizontalLines(true);
+        tblMenu.setGridColor(new Color(255,255,255));
+        
+        jScrollPane2.getViewport().setBackground(new Color(0,0,0,0));
+        tblPenjualan.setBackground(new Color(0,0,0,0));
+        jScrollPane2.setViewportBorder(null);
+        JTableHeader header2 = tblPenjualan.getTableHeader();
+        header2.setBackground(new Color(0,0,0,0));
+        header2.setForeground(new Color(255,255,255));
+        header2.setFont(new Font("Berlin Sans FB", Font.PLAIN, 18));
+        tblPenjualan.setShowHorizontalLines(true);
+        tblPenjualan.setGridColor(new Color(255,255,255));
+        
+        cmbKategori.setBackground(new Color(255,255,255));
+        cmbKategori.setForeground(new Color(255,255,255));
 //        this.getContentPane().setBackground(new Color(51, 51, 44));
     }
     
@@ -189,9 +214,11 @@ public class FrmPenjualan extends javax.swing.JFrame {
         jLabel2.setText("Qty");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 64, -1));
 
+        cmbKategori.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
         cmbKategori.setForeground(new java.awt.Color(255, 255, 255));
         cmbKategori.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbKategori.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cmbKategori.setOpaque(false);
         cmbKategori.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbKategoriActionPerformed(evt);
@@ -199,6 +226,8 @@ public class FrmPenjualan extends javax.swing.JFrame {
         });
         jPanel1.add(cmbKategori, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 200, -1));
 
+        tblPenjualan.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
+        tblPenjualan.setForeground(new java.awt.Color(255, 255, 255));
         tblPenjualan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -210,6 +239,7 @@ public class FrmPenjualan extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblPenjualan.setOpaque(false);
         tblPenjualan.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblPenjualanMouseClicked(evt);
@@ -219,6 +249,8 @@ public class FrmPenjualan extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 110, 325, 110));
 
+        tblMenu.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
+        tblMenu.setForeground(new java.awt.Color(255, 255, 255));
         tblMenu.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -231,6 +263,7 @@ public class FrmPenjualan extends javax.swing.JFrame {
             }
         ));
         tblMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tblMenu.setOpaque(false);
         tblMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblMenuMouseClicked(evt);
@@ -238,7 +271,7 @@ public class FrmPenjualan extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblMenu);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 690, 110));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 690, 230));
 
         btnMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/btnMenu.png"))); // NOI18N
         btnMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -278,6 +311,7 @@ public class FrmPenjualan extends javax.swing.JFrame {
 
         txtCari.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         txtCari.setForeground(new java.awt.Color(255, 255, 255));
+        txtCari.setText("Cari");
         txtCari.setBorder(null);
         txtCari.setOpaque(false);
         txtCari.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -291,8 +325,6 @@ public class FrmPenjualan extends javax.swing.JFrame {
             }
         });
         jPanel1.add(txtCari, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 260, 210, -1));
-
-        jSeparator3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 290, 210, 10));
 
         btnCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/btnCari.png"))); // NOI18N
@@ -334,23 +366,24 @@ public class FrmPenjualan extends javax.swing.JFrame {
     private void tblMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblMenuMouseClicked
         DefaultTableModel model = (DefaultTableModel)tblMenu.getModel();
         int row = tblMenu.getSelectedRow();
-        int qty = 0;
+        String qty = "0";
         Menu menu = new Menu();        
         DetailPenjualan detail = new DetailPenjualan();
         menu = menu.getById(Integer.parseInt(model.getValueAt(row, 0).toString()));
-        
-        qty = Integer.parseInt(JOptionPane.showInputDialog(this, "Masukkan Jumlah"));
-        
-        detail.setId((labelId.getText()));
+        qty = JOptionPane.showInputDialog(this, "Masukkan Jumlah");
+        if ( !(qty.isEmpty()) || !(qty.equalsIgnoreCase("0")) ) {
+            detail.setId((labelId.getText()));
         detail.setTgl_penjualan(formatter.format(date));
         detail.setMenu(menu);
-        detail.setQty(qty);
-        detail.setHarga(qty*(menu.getRcost()+menu.getScost()));
+        detail.setQty(Integer.parseInt(qty));
+        detail.setHarga(Integer.parseInt(qty)*(menu.getRcost()+menu.getScost()));
         detail.save();
         
         labelTotal.setText(String.valueOf(Integer.parseInt(labelTotal.getText())+detail.getHarga()));
         labelQty.setText(String.valueOf(Integer.parseInt(labelQty.getText())+detail.getQty()));
+        }
         tampilkanPesanan();
+        
     }//GEN-LAST:event_tblMenuMouseClicked
 
     private void tblPenjualanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPenjualanMouseClicked
