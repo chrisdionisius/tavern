@@ -10,6 +10,7 @@ Aplikasi penjualan restoran berbasis desktop (Java)
 ## Features
 
 - Login
+  <br>
   ![screenshot](img/login.png)
 - Penjualan
   ![screenshot](img/penjualan.png)
